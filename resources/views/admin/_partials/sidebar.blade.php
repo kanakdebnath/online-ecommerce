@@ -92,6 +92,14 @@
             <div data-i18n="Without navbar">Manage Category</div>
           </a>
         </li>
+
+        {{-- for sub category  --}}
+        <li class="menu-item">
+          <a href="{{ route('admin.sub-category.index') }}" class="menu-link">
+            <div data-i18n="Without navbar">Manage Sub-Category</div>
+          </a>
+        </li>
+        {{-- for sub category  --}}
       </ul>
     </li>
 

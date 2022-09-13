@@ -35,4 +35,11 @@ Route::middleware([
 Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'=>['admin','auth']],function(){
     Route::get('category/delete/{id}','CategoryController@delete')->name('category.delete');
     Route::resource('category','CategoryController');
+
+
+    // For Subcategory Route 
+    Route::get('sub-category/delete/{id}','SubCategoryController@delete')->name('sub-category.delete');
+    Route::resource('sub-category','SubCategoryController');
+    // For Subcategory Route 
+
 });
