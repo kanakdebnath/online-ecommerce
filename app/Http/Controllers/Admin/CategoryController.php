@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
+use App\Models\Admin\SubCategory;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 
@@ -43,6 +44,7 @@ class CategoryController extends Controller
         $model = new Category;
         $model->name = $request->name;
         $model->status = $request->status;
+        $model->slug = make_slug($request->name);
 
         if($request->hasFile('photo')){
             $file = $request->file('photo');
@@ -152,7 +154,9 @@ class CategoryController extends Controller
         }
     }
 
-    public function getcategory(){
-        
+    public function get_sub_categories(Request $request){
+
+        $data['sub_categories'] = SubCategory::where('status','active')->where('category_id',$request->category_id)->get();
+        return response()->json($data);
     }
 }

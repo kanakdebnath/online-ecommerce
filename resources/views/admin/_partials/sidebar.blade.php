@@ -103,6 +103,29 @@
       </ul>
     </li>
 
+
+    {{-- Product section  --}}
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div data-i18n="Layouts">Product</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="{{ route('admin.product.create') }}" class="menu-link">
+            <div data-i18n="Without menu">Product Create</div>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="{{ route('admin.product.index') }}" class="menu-link">
+            <div data-i18n="Without navbar">Product Category</div>
+          </a>
+        </li>
+
+      </ul>
+    </li>
+
     <li class="menu-item">
       <a
         href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
