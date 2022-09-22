@@ -119,7 +119,7 @@
         </li>
         <li class="menu-item">
           <a href="{{ route('admin.product.index') }}" class="menu-link">
-            <div data-i18n="Without navbar">Product Category</div>
+            <div data-i18n="Without navbar">All Product Manage</div>
           </a>
         </li>
 

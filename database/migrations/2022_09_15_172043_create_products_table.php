@@ -19,10 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('user_id');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->on('categories')->references('id')->onDelete('Cascade');
-            $table->string('subcategory_id');
-            $table->string('brand_id');
-            $table->string('views');
-            $table->string('num_of_sale');
+            $table->string('subcategory_id')->nullable();
+            $table->string('brand_id')->nullable();
+            $table->string('views')->nullable();
+            $table->string('num_of_sale')->nullable();
             $table->text('short_description')->nullable();
             $table->text('tags')->nullable();
             $table->longText('description')->nullable();

@@ -42,6 +42,8 @@
 
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
+    @stack('admin_css')
+
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -113,7 +115,7 @@
     <script src="{{ asset('admin/assets/js/dashboards-analytics.js')}}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js')}}"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     @stack('admin_script')
   </body>
 </html>
