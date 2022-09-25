@@ -98,7 +98,7 @@
                     <option value="inactive">InActive</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-success">Create Category</button>
+              <button type="submit" class="btn btn-success">Create Product</button>
             </form>
           </div>
         </div>

@@ -8,7 +8,7 @@
             <section class="home-slider position-relative mb-30">
                 <div class="home-slide-cover mt-30">
                     <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/slider-1.png)">
+                        <div class="single-hero-slider single-animation-wrap" style="background-image: url({{ asset('frontend/assets/imgs/slider/slider-1.png') }})">
                             <div class="slider-content">
                                 <h1 class="display-2 mb-40">
                                     Don’t miss amazing<br />
@@ -21,7 +21,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="single-hero-slider single-animation-wrap" style="background-image: url(assets/imgs/slider/slider-2.png)">
+                        <div class="single-hero-slider single-animation-wrap" style="background-image: url({{ asset('frontend/assets/imgs/slider/slider-2.png') }})">
                             <div class="slider-content">
                                 <h1 class="display-2 mb-40">
                                     Fresh Vegetables<br />
@@ -3383,21 +3383,17 @@
             <div class="sidebar-widget widget-category-2 mb-30">
                 <h5 class="section-title style-1 mb-30">Category</h5>
                 <ul>
+
+                    @php
+                        $categories = App\Models\Admin\Category::where('status','active')->take(5)->latest()->get();
+                    @endphp
+
+                    @foreach ($categories as $category)
                     <li>
-                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-1.svg" alt="" />Milks & Dairies</a><span class="count">30</span>
+                        <a href="#"> <img src="{{ asset('uploads/category').'/'.$category->icon }}" alt="" />{{ $category->name }}</a><span class="count">{{ category_count($category->id) }}</span>
                     </li>
-                    <li>
-                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-2.svg" alt="" />Clothing</a><span class="count">35</span>
-                    </li>
-                    <li>
-                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-3.svg" alt="" />Pet Foods </a><span class="count">42</span>
-                    </li>
-                    <li>
-                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-4.svg" alt="" />Baking material</a><span class="count">68</span>
-                    </li>
-                    <li>
-                        <a href="shop-grid-right.html"> <img src="assets/imgs/theme/icons/category-5.svg" alt="" />Fresh Fruit</a><span class="count">87</span>
-                    </li>
+                    @endforeach
+                    
                 </ul>
             </div>
             <!-- Fillter By Price -->
