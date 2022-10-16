@@ -105,15 +105,14 @@
                     </div>
                     <ul class="contact-infor">
                         <li><img src=" {{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}"
-                                alt="" /><strong>Address: </strong> <span>5171 W Campbell Ave
-                                undefined Kent, Utah 53127 United States</span></li>
+                                alt="" /><strong>Address: </strong> <span>{{get_setting_data('company_address')}}</span></li>
                         <li><img src=" {{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}"
-                                alt="" /><strong>Call Us:</strong><span>(+91) - 540-025-124553</span>
+                                alt="" /><strong>Call Us:</strong><span>{{get_setting_data('company_phone')}}</span>
                         </li>
                         <li><img src=" {{ asset('frontend/assets/imgs/theme/icons/icon-email-2.svg') }}"
-                                alt="" /><strong>Email:</strong><span>sale@Nest.com</span></li>
+                                alt="" /><strong>Email:</strong><span>{{get_setting_data('company_email')}}</span></li>
                         <li><img src=" {{ asset('frontend/assets/imgs/theme/icons/icon-clock.svg') }}"
-                                alt="" /><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span>
+                                alt="" /><strong>Hours:</strong><span>{{get_setting_data('company_hour')}}</span>
                         </li>
                     </ul>
                 </div>
@@ -204,14 +203,14 @@
         <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
             <div class="mobile-social-icon">
                 <h6>Follow Us</h6>
-                <a href="#"><img src=" {{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}"
+                <a href="{{get_setting_data('facebook')}}"><img src=" {{ asset('frontend/assets/imgs/theme/icons/icon-facebook-white.svg') }}"
                         alt="" /></a>
-                <a href="#"><img src=" {{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}"
+                <a href="{{get_setting_data('twitter')}}"><img src=" {{ asset('frontend/assets/imgs/theme/icons/icon-twitter-white.svg') }}"
                         alt="" /></a>
-                <a href="#"><img
+                <a href="{{get_setting_data('instagram')}}"><img
                         src=" {{ asset('frontend/assets/imgs/theme/icons/icon-instagram-white.svg') }}"
                         alt="" /></a>
-                <a href="#"><img
+                <a href="{{get_setting_data('linkedin')}}"><img
                         src=" {{ asset('frontend/assets/imgs/theme/icons/icon-pinterest-white.svg') }}"
                         alt="" /></a>
                 <a href="#"><img src=" {{ asset('frontend/assets/imgs/theme/icons/icon-youtube-white.svg') }}"

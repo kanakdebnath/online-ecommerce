@@ -46,6 +46,8 @@ class CategoryController extends Controller
         $model->status = $request->status;
         $model->slug = make_slug($request->name);
 
+        
+
         if($request->hasFile('photo')){
             $file = $request->file('photo');
             $ext = $file->extension() ?:'png';

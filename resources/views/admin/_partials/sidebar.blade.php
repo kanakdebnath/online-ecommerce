@@ -126,6 +126,55 @@
       </ul>
     </li>
 
+
+     {{-- User section  --}}
+     <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div data-i18n="Layouts">User</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="{{ route('admin.user.index') }}" class="menu-link">
+            <div data-i18n="Without navbar">All User Manage</div>
+          </a>
+        </li>
+
+      </ul>
+
+
+
+    </li>
+
+
+
+    {{-- Settings section  --}}
+    <li class="menu-item">
+      <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <i class="menu-icon tf-icons bx bx-layout"></i>
+        <div data-i18n="Layouts">Settings</div>
+      </a>
+
+      <ul class="menu-sub">
+        <li class="menu-item">
+          <a href="{{ route('admin.setting.general') }}" class="menu-link">
+            <div data-i18n="Without navbar">General setting</div>
+          </a>
+        </li>
+
+        <li class="menu-item">
+          <a href="{{ route('admin.setting.logo') }}" class="menu-link">
+            <div data-i18n="Without navbar">Logo setting</div>
+          </a>
+        </li>
+
+      </ul>
+
+
+      
+    </li>
+
     <li class="menu-item">
       <a
         href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"

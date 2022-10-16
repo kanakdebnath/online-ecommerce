@@ -112,6 +112,7 @@
   $(document).ready(function () {
             $('#category').on('change', function () {
                 var abc = this.value;
+                console.log(abc);
                 $("#sub-category").html('');
                 $.ajax({
                     url: "{{url('admin/get_sub_categories')}}",

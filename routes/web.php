@@ -51,4 +51,22 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::resource('product','ProductController');
     // For Product Route 
 
+     // For User Route 
+     Route::get('user/index','UserController@index')->name('user.index');
+     Route::get('user/create','UserController@create')->name('user.create');
+     Route::post('user/store','UserController@store')->name('user.store');
+     Route::patch('user/update/{id}','UserController@update')->name('user.update');
+     Route::get('user/edit/{id}','UserController@edit')->name('user.edit');
+     Route::get('user/delete/{id}','UserController@delete')->name('user.delete');
+     // For user Route 
+
+
+      // For Settings Route 
+      Route::get('setting/general','SettingController@general')->name('setting.general');
+      Route::get('setting/logo','SettingController@logo')->name('setting.logo');
+      Route::post('setting/store','SettingController@store')->name('setting.store');
+      Route::post('setting/store_logo','SettingController@store_logo')->name('setting.store_logo');
+      
+      // For Settings Route 
+
 });
