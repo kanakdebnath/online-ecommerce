@@ -6,7 +6,8 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="index.html"><img src="assets/imgs/theme/logo.svg" alt="logo" /></a>
+                    <a href="{{ url('/') }}"><img src=" {{ asset('uploads/setting').'/'.get_setting_data('logo') }}"
+                        alt="logo" /></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
@@ -50,21 +51,25 @@
                                 </form>
                             </div>
                             <div class="header-action-icon-2">
-                                <a href="page-account.html">
-                                    <img class="svgInject" alt="Nest" src="assets/imgs/theme/icons/icon-user.svg" />
+                                <a href="{{ route('dashboard') }}">
+                                    <img class="svgInject" alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-user.svg') }}" />
                                 </a>
                                 <span class="lable ml-0">Account</span>
                             </div>
                             <div class="header-action-icon-2">
-                                <a href="shop-wishlist.html">
-                                    <img class="svgInject" alt="Nest" src="assets/imgs/theme/icons/icon-heart.svg" />
-                                    <span class="pro-count blue">6</span>
+                                <a href="{{ route('wishlist') }}">
+                                    <img class="svgInject" alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-heart.svg') }}" />
+                                    @if (Auth::check())
+                                    <span class="pro-count blue">{{ wishlist_count(Auth::user()->id) }}</span>
+                                    @else
+                                    <span class="pro-count blue">0</span>
+                                    @endif
                                 </a>
                                 <span class="lable">Wishlist</span>
                             </div>
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="shop-cart.html">
-                                    <img alt="Nest" src="assets/imgs/theme/icons/icon-cart.svg" />
+                                <a class="mini-cart-icon" href="{{ route('cart') }}">
+                                    <img alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
                                     <span class="pro-count blue">2</span>
                                 </a>
                                 <span class="lable">Cart</span>
@@ -116,7 +121,8 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="assets/imgs/theme/logo.svg" alt="logo" /></a>
+                    <a href="{{ url('/') }}"><img src=" {{ asset('uploads/setting').'/'.get_setting_data('logo') }}"
+                        alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">

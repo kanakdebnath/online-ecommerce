@@ -70,3 +70,21 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
       // For Settings Route 
 
 });
+
+
+
+Route::get('product-details/{id}','HomeController@product_details')->name('product-details');
+
+
+
+Route::group(['middleware'=>'auth'],function(){
+
+    Route::get('cart','HomeController@cart')->name('cart');
+    Route::get('dashboard','HomeController@dashboard')->name('dashboard');
+
+
+    // Wishlist 
+    Route::get('wishlist','WishlistController@wishlist')->name('wishlist');
+    Route::get('wishlist/store/{id}','WishlistController@store')->name('wishlist.store');
+
+});

@@ -12,9 +12,13 @@
         <meta property="og:url" content="" />
         <meta property="og:image" content="" />
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/imgs/theme/favicon.svg') }}" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/setting').'/'.get_setting_data('favicon') }}" />
         <!-- Template CSS -->
         <link rel="stylesheet" href="{{ asset('frontend/assets/css/main3661.css?v=2.0') }}" />
+
+        <!-- toastr CSS  -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+	
     </head>
 
     <body>
@@ -267,6 +271,47 @@
         <!-- Template  JS -->
         <script src="{{ asset('frontend/assets/js/main3661.js?v=2.0')}}"></script>
         <script src="{{ asset('frontend/assets/js/shop3661.js?v=2.0')}}"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+        <script>
+            @if(Session::has('message'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.success("{{ session('message') }}");
+            @endif
+    
+            @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.error("{{ session('error') }}");
+            @endif
+    
+            @if(Session::has('info'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.info("{{ session('info') }}");
+            @endif
+    
+            @if(Session::has('warning'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true
+            }
+                    toastr.warning("{{ session('warning') }}");
+            @endif
+            </script>
+            
     </body>
 
 <!-- Mirrored from belabeliku.id/nest/nestmart-frontend/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Jul 2022 13:52:46 GMT -->
