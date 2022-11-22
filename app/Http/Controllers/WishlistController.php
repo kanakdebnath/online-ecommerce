@@ -22,14 +22,18 @@ public function wishlist(){
 
     // wishlist 
     public function store($id){
-        $model = new Wishlist();
+        $user_id = Auth::user()->id;
+        if(Wishlist::where('product_id',$id)->where('user_id',$user_id)->count() > 0){
+            return redirect()->back()->with('warning', 'Product Already Added In wishlist');
+        }else{
+            $model = new Wishlist();
+            $model->user_id = $user_id;
+            $model->product_id = $id;
+            $model->save();
 
-        $model->user_id = Auth::user()->id;
-        $model->product_id = $id;
-
-        $model->save();
-
-        return redirect()->route('wishlist')->with('message', 'Product Added In wishlist');
+            return redirect()->route('wishlist')->with('message', 'Product Added In wishlist');
+           
+        }
     }
 
 

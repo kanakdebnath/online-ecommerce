@@ -11,19 +11,18 @@
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
+
+                        @php
+                            $categories = App\Models\Admin\Category::where('status','active')->take(5)->latest()->get();
+                        @endphp
+                                   
+
                         <form action="#">
                             <select class="select-active">
                                 <option>All Categories</option>
-                                <option>Milks and Dairies</option>
-                                <option>Wines & Alcohol</option>
-                                <option>Clothing & Beauty</option>
-                                <option>Pet Foods & Toy</option>
-                                <option>Fast food</option>
-                                <option>Baking material</option>
-                                <option>Vegetables</option>
-                                <option>Fresh Seafood</option>
-                                <option>Noodles & Rice</option>
-                                <option>Ice cream</option>
+                                @foreach ($categories as $category)
+                                <option>{{ $category->name }}</option>
+                                @endforeach
                             </select>
                             <input type="text" placeholder="Search for items..." />
                         </form>
@@ -68,45 +67,40 @@
                                 <span class="lable">Wishlist</span>
                             </div>
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="{{ route('cart') }}">
+                                <a class="mini-cart-icon" href="{{ route('getCarts') }}">
                                     <img alt="Nest" src="{{ asset('frontend/assets/imgs/theme/icons/icon-cart.svg') }}" />
-                                    <span class="pro-count blue">2</span>
+                                    <span class="pro-count blue">{{ \Cart::getContent()->count() }}</span>
                                 </a>
                                 <span class="lable">Cart</span>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
+                                        @php
+                                            $carts = \Cart::getContent();
+                                        @endphp
+                                        @foreach ($carts as $product)
+                                            
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest" src="assets/imgs/shop/thumbnail-3.jpg" /></a>
+                                                <a href="shop-product-right.html"><img alt="Nest" src="{{ $product->attributes['photo'] }}" /></a>
                                             </div>
                                             <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
-                                                <h4><span>1 × </span>$800.00</h4>
+                                                <h4><a href="{{ route('product-details',$product->id) }}">{{ $product->name }}</a></h4>
+                                                <h4><span>{{ $product->quantity }} × </span>{{ $product->price }}</h4>
                                             </div>
                                             <div class="shopping-cart-delete">
                                                 <a href="#"><i class="fi-rs-cross-small"></i></a>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest" src="assets/imgs/shop/thumbnail-2.jpg" /></a>
-                                            </div>
-                                            <div class="shopping-cart-title">
-                                                <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
-                                                <h4><span>1 × </span>$3200.00</h4>
-                                            </div>
-                                            <div class="shopping-cart-delete">
-                                                <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                            </div>
-                                        </li>
+                                        
+                                        @endforeach
                                     </ul>
                                     <div class="shopping-cart-footer">
                                         <div class="shopping-cart-total">
-                                            <h4>Total <span>$4000.00</span></h4>
+                                            <h4>Total <span>{{ \Cart::getTotal() }}</span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
-                                            <a href="shop-cart.html" class="outline">View cart</a>
-                                            <a href="shop-checkout.html">Checkout</a>
+                                            <a href="{{ route('getCarts') }}" class="outline">View cart</a>
+                                            <a href="{{ route('checkout') }}">Checkout</a>
                                         </div>
                                     </div>
                                 </div>

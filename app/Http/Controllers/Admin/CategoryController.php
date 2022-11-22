@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
+use Illuminate\Validation\Rule;
 use App\Models\Admin\SubCategory;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
@@ -41,6 +42,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'name' => ['required','unique:categories'],
+        ]);
+
+
         $model = new Category;
         $model->name = $request->name;
         $model->status = $request->status;
@@ -102,6 +109,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
+        $request->validate([
+            'name' => ['required', 'max:255', Rule::unique('categories')->ignore($id)],
+        ]);
         
         $model = Category::findOrFail($id);
         if ($model) {

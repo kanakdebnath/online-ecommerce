@@ -79,7 +79,6 @@ Route::get('product-details/{id}','HomeController@product_details')->name('produ
 
 Route::group(['middleware'=>'auth'],function(){
 
-    Route::get('cart','HomeController@cart')->name('cart');
     Route::get('dashboard','HomeController@dashboard')->name('dashboard');
 
 
@@ -88,3 +87,12 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('wishlist/store/{id}','WishlistController@store')->name('wishlist.store');
 
 });
+
+
+Route::get('cart/clear','CartController@clearAllCart')->name('clearAllCart');
+Route::get('cart/delete/{id}','CartController@delete')->name('cart.delete');
+Route::get('addtocart/{id}','CartController@addtocart')->name('addToCart');
+Route::get('carts','CartController@getcarts')->name('getCarts');
+Route::get('checkout','CartController@checkout')->name('checkout');
+Route::post('order_submit','Admin\CheckoutController@order_submit')->name('order_submit');
+
