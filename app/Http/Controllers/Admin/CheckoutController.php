@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -15,7 +16,8 @@ class CheckoutController extends Controller
         //     # code...
         // }
 
-        
+        if(Auth::check()){
+
 
         if($request->payment_option != null){
             $OrderController = new OrderController;
@@ -26,8 +28,19 @@ class CheckoutController extends Controller
             }elseif($request->payment_option == 'paypal'){
                 echo 'bank';
             }else{
+
+                $details =  array(
+                    'name' => $request->fname,
+                    'body' => 'Thanks for your Order. I will contact you soon.'
+                );
+
+                \Mail::to($request->email)->send(new \App\Mail\MyTestMail($details));
+            
                 return redirect()->route('dashboard')->with('messege','Order Place Successfully');
             }
         }
+    }else{
+        return redirect()->route('login');
+    }
     }
 }

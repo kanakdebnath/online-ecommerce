@@ -60,5 +60,7 @@ class OrderController extends Controller
                 $order_details->save();
             }
         }
+
+        \Cart::clear();
     }
 }
