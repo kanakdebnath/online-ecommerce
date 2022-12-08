@@ -18,6 +18,12 @@ class OrderController extends Controller
         $orders = Order::all();
         return view('admin.order.index',compact('orders'));
     }
+
+    public function order_view(Request $request){
+
+        $order = Order::find($request->id);
+        return view('admin.order.view',compact('order'));
+    }
     public function store(Request $request){
 
         $order = new Order;

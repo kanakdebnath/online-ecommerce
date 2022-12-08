@@ -42,6 +42,9 @@ class HomeController extends Controller
 public function product_details($id){
     $product = Product::findOrFail($id);
 
+    $product->views += 1;
+    $product->save();
+
     $reletade_product = Product::where('category_id',$product->category_id)
                         ->where('status','active')
                         ->latest()->take(4)

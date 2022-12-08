@@ -5,7 +5,8 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Category/</span> Index</h4> 
-    <a class="btn btn-success mb-2" href="{{ route('admin.category.create') }}">Create Category</a>
+    {{-- <a class="btn btn-success mb-2" href="{{ route('admin.category.create') }}">Create Category</a> --}}
+    <a class="btn btn-success mb-2" onclick="category_create()" >Create Category</a>
 
     @if (session()->has('messege'))
       <div class="alert alert-success">
@@ -59,3 +60,20 @@
       </div>
   </div>
 @stop
+
+
+
+@push('admin_script')
+<script>
+
+  function category_create(){
+          $('#AdminModal').modal('show');
+          $('#AdminModalBody').html(null);
+          $('#exampleModalLabel3').html('Category Create');
+          $.get('{{ route('admin.category.create') }}', {_token:'{{ csrf_token() }}'}, function(data){
+              $('#AdminModalBody').html(data);
+          });
+      }
+
+  </script>
+@endpush

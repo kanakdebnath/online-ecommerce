@@ -54,6 +54,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     // For Order Route 
     Route::get('order/index','OrderController@index')->name('order.index');
     Route::get('order/delete/{id}','OrderController@delete')->name('order.delete');
+    Route::post('order/view','OrderController@order_view')->name('orderviewModal');
     // For Order Route 
 
 

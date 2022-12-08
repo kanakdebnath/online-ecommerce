@@ -52,7 +52,11 @@
                       </button>
                       <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{ route('admin.order.delete',$order->id) }}"><i class="bx bx-trash me-1"></i> Delete</a>
+
+                        <a class="dropdown-item" data-bs-target="#orderviewModal" data-bs-toggle="modal" onclick="order_view({{ $order->id }})"><i class="bx bx-trophy  me-1"></i> View</a>
                       </div>
+
+                        
                     </div>
                   </td>
                 </tr>
@@ -63,3 +67,18 @@
       </div>
   </div>
 @stop
+
+@push('admin_script')
+<script>
+
+  function order_view(id){
+          $('#AdminModal').modal('show');
+          $('#AdminModalBody').html(null);
+          $('#exampleModalLabel3').html('Order View Modal');
+          $.post('{{ route('admin.orderviewModal') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+              $('#AdminModalBody').html(data);
+          });
+      }
+
+  </script>
+@endpush

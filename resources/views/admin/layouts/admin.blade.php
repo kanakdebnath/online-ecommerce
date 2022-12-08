@@ -99,6 +99,8 @@
     </div>
     <!-- / Layout wrapper -->
 
+    @include('admin.modal')
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="{{ asset('admin/assets/vendor/libs/jquery/jquery.js')}}"></script>
