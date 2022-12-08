@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
+use App\Models\Admin\Category;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -22,6 +23,11 @@ class HomeController extends Controller
         }else{
             return redirect()->route('login');
         }
+    }
+
+    public function index2()
+    {
+        return view('frontend.index');
     }
 
 
@@ -44,6 +50,40 @@ public function product_details($id){
     return view('frontend.product-details',compact('product','reletade_product'));
 }
 // Product details code 
+
+// QuickViewModal 
+
+public function QuickViewModal(Request $request)
+{
+    $product = Product::find($request->id);
+    return view('frontend.partials.quick-view', compact('product'));
+}
+// QuickViewModal 
+
+
+// shop page 
+
+
+public function shop(){
+    $products = Product::where('status','active')->get();
+    $categories = Category::where('status','active')->get();
+
+    return view('frontend.shop',compact('products','categories'));
+}
+
+public function category_shop($id){
+    $products = Product::where('status','active')->where('category_id',$id)->get();
+
+    $cate = Category::findOrFail($id);
+
+
+    $categories = Category::where('status','active')->get();
+
+    return view('frontend.category-shop',compact('products','categories','cate'));
+}
+
+
+// shop page 
 
 
 // Dashboard 

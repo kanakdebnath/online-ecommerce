@@ -85,12 +85,12 @@
 
 
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                            <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                            <a aria-label="Quick view" onclick="QuickView({{ $product->id }})" class="action-btn quick_view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.html">{{ $product->category->name }}</a>
+                                            <a href="{{ route('category-shop',$product->category_id) }}">{{ $product->category->name }}</a>
                                         </div>
                                         <h2><a href="{{ route('product-details',$product->id) }}">{{ $product->name }}</a></h2>
                                         
@@ -138,7 +138,7 @@
                                         <div class="product-action-1">
                                             <a aria-label="Add To Wishlist" class="action-btn" href="{{ route('wishlist.store',$product->id) }}"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                            <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                            <a aria-label="Quick view" onclick="QuickView({{ $product->id }})" class="action-btn quick_view" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">

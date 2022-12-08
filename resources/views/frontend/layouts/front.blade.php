@@ -11,6 +11,7 @@
         <meta property="og:type" content="" />
         <meta property="og:url" content="" />
         <meta property="og:image" content="" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/setting').'/'.get_setting_data('favicon') }}" />
         <!-- Template CSS -->
@@ -242,7 +243,7 @@
             <div class="preloader d-flex align-items-center justify-content-center">
                 <div class="preloader-inner position-relative">
                     <div class="text-center">
-                        <img src="assets/imgs/theme/loading.gif" alt="" />
+                        <img src="{{ asset('frontend/assets/imgs/theme/loading.gif')}}" alt="" />
                     </div>
                 </div>
             </div>
@@ -311,6 +312,20 @@
                     toastr.warning("{{ session('warning') }}");
             @endif
             </script>
+
+            <script>
+
+            function QuickView(id){
+                    $('#quickViewModal').modal('show');
+                    $('#quickView-modal-body').html(null);
+                    $.post('{{ route('QuickViewModal') }}', {_token:'{{ csrf_token() }}', id:id}, function(data){
+                        $('#quickView-modal-body').html(data);
+                    });
+                }
+
+            </script>
+
+            @yield('front-script')
             
     </body>
 

@@ -23,7 +23,8 @@ Route::get('/', function () {
 
 Route::get('logout','HomeController@logout');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index2')->name('home2');
 
 Route::middleware([
     'auth:sanctum',
@@ -46,6 +47,14 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::get('sub-category/delete/{id}','SubCategoryController@delete')->name('sub-category.delete');
     Route::resource('sub-category','SubCategoryController');
     // For Subcategory Route 
+
+
+    
+
+    // For Order Route 
+    Route::get('order/index','OrderController@index')->name('order.index');
+    Route::get('order/delete/{id}','OrderController@delete')->name('order.delete');
+    // For Order Route 
 
 
     
@@ -76,8 +85,11 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
 
 
 
-Route::get('product-details/{id}','HomeController@product_details')->name('product-details');
+Route::get('category-shop/{id}','HomeController@category_shop')->name('category-shop');
+Route::get('shop','HomeController@shop')->name('shop');
 
+Route::get('product-details/{id}','HomeController@product_details')->name('product-details');
+Route::post('/QuickViewModal', 'HomeController@QuickViewModal')->name('QuickViewModal');
 
 
 Route::group(['middleware'=>'auth'],function(){
@@ -90,6 +102,11 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('wishlist/store/{id}','WishlistController@store')->name('wishlist.store');
 
 });
+
+//bKash
+Route::post('/bkash/createpayment', 'Admin\BkashController@checkout')->name('bkash.checkout');
+Route::post('/bkash/executepayment', 'Admin\BkashController@excecute')->name('bkash.excecute');
+Route::get('/bkash/success', 'Admin\BkashController@success')->name('bkash.success');
 
 
 Route::get('cart/clear','CartController@clearAllCart')->name('clearAllCart');

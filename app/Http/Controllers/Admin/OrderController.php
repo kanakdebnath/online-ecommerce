@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+
+    public function index(){
+
+        $orders = Order::all();
+        return view('admin.order.index',compact('orders'));
+    }
     public function store(Request $request){
 
         $order = new Order;
@@ -60,6 +66,8 @@ class OrderController extends Controller
                 $order_details->save();
             }
         }
+
+        $request->session()->put('order_id', $order->id);
 
         \Cart::clear();
     }
